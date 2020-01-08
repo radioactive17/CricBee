@@ -1,0 +1,280 @@
+{% load static %}
+
+<html>
+<head>
+  <title>home</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'recentnews/home.css' %}">
+
+</head>
+
+<body>
+
+</body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#00b359;">
+    <!-- TITLE -->
+    <a class="navbar-brand" href="#">CricBee</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Items -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Teams
+        </a>
+        <div class="dropdown-menu" style="background-color:#00b359;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-white" href="#">Test</a>
+          <a class="dropdown-item text-white" href="#">ODI</a>
+          <a class="dropdown-item text-white" href="#">T20</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Fixtures
+        </a>
+        <div class="dropdown-menu" style="background-color:#00b359;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-white" href="#">Men</a>
+          <a class="dropdown-item text-white" href="#">Women</a>
+          <a class="dropdown-item text-white" href="#">U19</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Rankings
+        </a>
+        <div class="dropdown-menu" style="background-color:#00b359;" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-white" href="#">Test</a>
+          <a class="dropdown-item text-white" href="#">ODI</a>
+          <a class="dropdown-item text-white" href="#">T20</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
+      </li>
+
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+      <a class="btn btn-md btn-link my-2 mr-2 my-sm-0 text-white" href="#">SignUp</a>
+      <a class="btn btn-md btn-link my-2 my-sm-0 text-white" href="#">Login</a>
+    </form>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <div class="row mt-3 ml-1">
+    <!-- News Section-->
+    <div class="col-8">
+      <!-- below carousel section -->
+      <div class="row mt-3">
+        {% for news in recentnews %}
+            <div class="col-4">
+                <div class="border border-black-50 mt-2">
+                  <img class="d-block w-100" src={{ news.image }}>
+                  <center><a class="h6" style="color:black;" href="{{ news.link }}"><b>{{ news.headline }}</b></a></center>
+                  <p class="pl-2 mt-2"><i>{{ news.upload_time }}</i></p>
+                </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!--Scorecard Seciton -->
+
+    <div class="col-4 mt-4">
+      <div class="row">
+        <div class="col-11"><center><p class="h5">Live Scores</p></center></div>
+      </div>
+      {% for s1 in scorecard1 %}
+      <div class="border border-black-50 mt-2 col-11 text-light" style="background-color:black;">
+        <p class="mt-3 ml-5">{{ s1.srs }},{{ s1.mnum }}
+        {{ s1.venue_name }},{{ s1.venue_location }}</p>
+        <hr class="hrchange" style="border-top:1px solid white;">
+        {% for s2 in scorecard2 %}
+          {% if s1.matchid == s2.matchid %}
+          <p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs1 }}<br>
+            {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p>
+          {% endif %}
+        {% endfor %}
+        <hr class="hrchange" style="border-top:1px solid white;">
+        <p class="ml-5">{{ s1.toss }}</p>
+      </div>
+      {% endfor %}
+      <!--
+
+
+      <div class="ml-5 mt-5 col-10 border border-black-50 mr-2 text-center ">
+        <div class="row ">
+          <div class="col-6 text-left font-weight-bold text-uppercase"><a class="text-dark" href="#">Ind vs WI 3rd T20</a></div>
+          <div class="col-6 text-right font-weight-bold">Mumbai,India</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-6 text-left">IND : 125/1</div>
+          <div class="col-6 text-right">Over 12.2</div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-6 text-left">WI</div>
+          <div class="col-6 text-right"></div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center font-italic">WI won the toss and chose to field</div>
+        </div>
+      </div>
+
+      <div class="ml-5 mt-5 col-10 border border-black-50 mr-2 text-center ">
+        <div class="row ">
+          <div class="col-6 text-left font-weight-bold text-uppercase"><a class="text-dark" href="#">Ind vs WI 3rd T20</a></div>
+          <div class="col-6 text-right font-weight-bold">Mumbai,India</div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-6 text-left">IND : 125/1</div>
+          <div class="col-6 text-right">Over 12.2</div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-6 text-left">WI</div>
+          <div class="col-6 text-right"></div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center font-italic">WI won the toss and chose to field</div>
+        </div>
+      </div>
+    -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+		<footer class="pt-5 pb-4 mt-2" id="contact">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+						<h5 class="mb-4 font-weight-bold">ABOUT US</h5>
+						<p class="mb-4">CricBee is a website for Cricket Enthusiast where you can check live scores,rankings and much more.</p>
+						<ul class="f-address">
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="fas fa-map-marker"></i></div>
+									<div class="col-10">
+										<h6 class="font-weight-bold mb-0">Address:</h6>
+										<p>B-16,Madhur Milan,Dr.R.P.Road,Mulund-West. Mumbai-400080</p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="far fa-envelope"></i></div>
+									<div class="col-10">
+										<h6 class="font-weight-bold mb-0">Have any questions?</h6>
+										<p><a href="#">jigsshah.97@gmail.com</a></p>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="fas fa-phone-volume"></i></div>
+									<div class="col-10">
+										<h6 class="font-weight-bold mb-0">Address:</h6>
+										<p><a href="#">+91 8767670405</a></p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+						<h5 class="mb-4 font-weight-bold">FRESH TWEETS</h5>
+						<ul class="f-address">
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="fab fa-twitter"></i></div>
+									<div class="col-10">
+										<p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+										<label>10 Mins Ago</label>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="fab fa-twitter"></i></div>
+									<div class="col-10">
+										<p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+										<label>10 Mins Ago</label>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="row">
+									<div class="col-1"><i class="fab fa-twitter"></i></div>
+									<div class="col-10">
+										<p class="mb-0"><a href="#">@userthemesrel </a> HTML Version Out Now</p>
+										<label>10 Mins Ago</label>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+						<h5 class="mb-4 font-weight-bold">LATEST UPDATES</h5>
+						<ul class="recent-post">
+							<li>
+								<label class="mr-3">28 <br><span>APR</span></label>
+								<span>Rendomised words which dont look eveable.</span>
+							</li>
+							<li>
+								<label class="mr-3">29 <br><span>APR</span></label>
+								<span>Rendomised words which dont look eveable.</span>
+							</li>
+							<li>
+								<label class="mr-3">30 <br><span>APR</span></label>
+								<span>Rendomised words which dont look eveable.</span>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
+						<h5 class="mb-4 font-weight-bold">CONNECT WITH US</h5>
+						<ul class="social-pet mt-4">
+							<li><a href="#" title="facebook"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="#" title="twitter"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#" title="google-plus"><i class="fab fa-google-plus-g"></i></a></li>
+							<li><a href="#" title="instagram"><i class="fab fa-instagram"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- Copyright -->
+		<section class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 ">
+						<div class="text-center text-white">
+							&copy; 2019 Cricbee. All Rights Reserved.
+						</div>
+					</div>
+        </section>
+				</div>
+			</div>
+  <!--
+  <footer class="page-footer font-small mt-2" style="background-color:#00b359;">
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a id="cnamefooter" href="#">Cricbee.com</a>
+    </div>
+  </footer>
+-->
+
+</html>

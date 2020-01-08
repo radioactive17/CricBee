@@ -1,0 +1,47 @@
+<!--<html>
+<body>
+  {% for blog in blogs %}
+    <p><b>Title : {{ blog.title }}</b></p>
+    <p><b> Created by : {{ blog.author }}</b></p>
+    <p>Content : {{ blog.content }}</p><br><br>
+  {% endfor %}
+</body>
+</html>
+-->
+
+<html>
+<head>
+  <title>BLOG</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="container">
+      {% for blog in blogs %}
+      <div class="row bg-succcess mt-2">
+        <div class="col-sm-6 mx-auto border border-black-50">
+            <div class="row mt-3">
+              <div class="col-sm-4"><b>{{ blog.title }}</b></div>
+              <div class="col-sm-8"><i>published by: <a href=#>{{ blog.author }}</a> on {{ blog.date_posted }} </i></div>
+            </div>
+            <hr>
+            <div class="row mt-3">
+              <div class="col-sm-12">
+                <p>{{ blog.content }}</p>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-primary ml-2 mb-2">Like</button>
+              <button type="button" class="btn btn-sm btn-outline-danger ml-2 mb-2">Dislike</button>
+              <button type="button" class="btn btn-sm btn-outline-warning ml-2 mb-2">Report</button>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+class(models.Model):
+    username=models.CharField(max_lenght=15)
+    password=models.CharField(max_length=15)
+    email=models.EmailField(max_length=100)
+    contactno=models.BigIntegerField(max_length=10)
+    country=models.CharField(max_length=25)
+    gender=models.CharField(max_length=20)
