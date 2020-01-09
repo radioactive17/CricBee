@@ -57,9 +57,10 @@
           Rankings
         </a>
         <div class="dropdown-menu" style="background-color:#00b359;" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-white" href="#">Test</a>
-          <a class="dropdown-item text-white" href="#">ODI</a>
-          <a class="dropdown-item text-white" href="#">T20</a>
+          <a class="dropdown-item text-white" href="#">Team Rankings(Men)</a>
+          <a class="dropdown-item text-white" href="#">Player Rankings(Men)</a>
+          <a class="dropdown-item text-white" href="#">Team Rankings(Women)</a>
+          <a class="dropdown-item text-white" href="#">Player Rankings(Women)</a>
         </div>
       </li>
       <li class="nav-item">
@@ -107,24 +108,33 @@
         <hr class="hrchange" style="border-top:1px solid white;">
         {% for s2 in scorecard2 %}
           {% if s1.matchid == s2.matchid_id %}
-            <!-- If 3rd Inning is played -->
-            {% if s2.team_name3 == s2.team_name1 %}
-              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} & {{ s2.runs3 }}/{{ s2.wickets3 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
-                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p></a>
-            {% elif s2.team_name3 == s2.team_name2 %}
-              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
-                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} & {{ s2.runs3 }}/{{ s2.wickets3 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}</p></a>
             <!-- If 4th Inning is played -->
-            {% elif s2.team_name4 == s2.team_name1 %}
-              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} & {{ s2.runs4 }}/{{ s2.wickets4 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs4 }}<br>
-                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p></a>
-            {% elif s2.team_name4 == s2.team_name2 %}
-              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
+            {% if s2.inning_num4 %}
+              {% if s2.team_name4 == s2.team_name1 %}
+                <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} & {{ s2.runs4 }}/{{ s2.wickets4 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs4 }}<br>
+                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} & {{ s2.runs3 }}/{{ s2.wickets3 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}</p></a>
+              {% elif s2.team_name4 == s2.team_name2 %}
+                <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} & {{ s2.runs3 }}/{{ s2.wickets3 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
                 {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} & {{ s2.runs4 }}/{{ s2.wickets4 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs4 }}</p></a>
-            <!-- If Only two innings are played -->
-            {% else %}
-              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs1 }}<br>
+              {% endif %}
+            <!-- If 3rd Inning is played -->
+            {% elif s2.inning_num3 %}
+              {% if s2.team_name3 == s2.team_name1 %}
+                <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} & {{ s2.runs3 }}/{{ s2.wickets3 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
                 {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p></a>
+              {% elif s2.team_name3 == s2.team_name2 %}
+                <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}<br>
+                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} & {{ s2.runs3 }}/{{ s2.wickets3 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs3 }}</p></a>
+              {% endif %}
+            <!-- If Only two innings are played -->
+            {% elif s2.inning_num2 %}
+              <a href="#" class="text-light" style="t-ext-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs1 }}<br>
+                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p></a>
+            {% elif s2.inning_num1 %}
+              <a href="#" class="text-light" style="text-decoration:none;"><p class="ml-5">{{ s2.team_name1 }} : {{ s2.runs1 }}/{{ s2.wickets1 }}&nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs1 }}<br>
+                {{ s2.team_name2 }} : {{ s2.runs2 }}/{{ s2.wickets2 }} &nbsp&nbsp&nbsp&nbsp&nbsp Over : {{ s2.overs2 }}</p></a>
+            {% else %}
+              <center><p>Match has not yet started!</p></center>
             {% endif %}
           {% endif %}
         {% endfor %}
@@ -132,47 +142,6 @@
         <p class="ml-5">{{ s1.status }}</p>
       </div>
       {% endfor %}
-      <!--
-
-
-      <div class="ml-5 mt-5 col-10 border border-black-50 mr-2 text-center ">
-        <div class="row ">
-          <div class="col-6 text-left font-weight-bold text-uppercase"><a class="text-dark" href="#">Ind vs WI 3rd T20</a></div>
-          <div class="col-6 text-right font-weight-bold">Mumbai,India</div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-6 text-left">IND : 125/1</div>
-          <div class="col-6 text-right">Over 12.2</div>
-        </div>
-        <div class="row mt-1">
-          <div class="col-6 text-left">WI</div>
-          <div class="col-6 text-right"></div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center font-italic">WI won the toss and chose to field</div>
-        </div>
-      </div>
-
-      <div class="ml-5 mt-5 col-10 border border-black-50 mr-2 text-center ">
-        <div class="row ">
-          <div class="col-6 text-left font-weight-bold text-uppercase"><a class="text-dark" href="#">Ind vs WI 3rd T20</a></div>
-          <div class="col-6 text-right font-weight-bold">Mumbai,India</div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-6 text-left">IND : 125/1</div>
-          <div class="col-6 text-right">Over 12.2</div>
-        </div>
-        <div class="row mt-1">
-          <div class="col-6 text-left">WI</div>
-          <div class="col-6 text-right"></div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center font-italic">WI won the toss and chose to field</div>
-        </div>
-      </div>
-    -->
     </div>
   </div>
 
