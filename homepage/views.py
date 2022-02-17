@@ -5,8 +5,9 @@ import sys
 # Create your views here.
 
 #Saving news in db
-sys.path.append(r'C:\Users\amits\OneDrive\Desktop\College\Python\BeautifulSoup')
+sys.path.append(r'C:\Users\jigss\OneDrive\Desktop\College\Python\BeautifulSoup\Cricbee')
 import news1 as news
+
 
 j=news.news_headline[::-1]
 for i in j:
@@ -14,11 +15,11 @@ for i in j:
     n.save()
 
 #Saving match & team details in db
-sys.path.append(r'C:\Users\amits\OneDrive\Desktop\College\Python\pycricbuzz')
-import scorecard as s
+#sys.path.append(r'C:\Users\jigss\OneDrive\Desktop\College\Python\pycricbuzz')
+#import scorecard as s
 
-j=s.details[::-1]
-for i in j:
+#j=s.details[::-1]
+'''for i in j:
     x=MatchDetails(matchid=i[0],srs=i[1],mnum=i[2],type=i[3],mchstate=i[4],status=i[5],venue_name=i[6],venue_location=i[7],toss=i[8],date_modified_md=timezone.now())
     x.save()
     y=TeamDetails(
@@ -30,16 +31,18 @@ for i in j:
         date_modified_td=timezone.now()
         )
     y.save()
-
+'''
 def home(request):
+
     recentnews=Recentnews.objects.all().order_by('-newsid')[:10]
-    scorecard1=MatchDetails.objects.all().order_by('-date_modified_md')[:3]
-    scorecard2=TeamDetails.objects.all().order_by('-date_modified_td')[:3]
-    #carousel=Recentnews.objects.all().reverse().order_by('newsid')[:3]
+    #scorecard1=MatchDetails.objects.all().order_by('-date_modified_md')[:3]
+    #scorecard2=TeamDetails.objects.all().order_by('-date_modified_td')[:3]
+    carousel=Recentnews.objects.all().reverse().order_by('newsid')[:3]
     context={
         'recentnews':recentnews,
-        'scorecard1':scorecard1,
-        'scorecard2':scorecard2,
-        #'carousel':carousel,
+        #'scorecard1':scorecard1,
+        #'scorecard2':scorecard2,
+        'carousel':carousel,
     }
+
     return render(request,'homepage/home.html',context)
