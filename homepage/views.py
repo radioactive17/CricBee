@@ -46,3 +46,10 @@ def home(request):
     }
 
     return render(request,'homepage/home.html',context)
+
+
+def login(request):
+    return render(request,'homepage/login.html')
+
+def signup(request):
+    return render(request, 'homepage/signup.html')   
