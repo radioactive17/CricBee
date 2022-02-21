@@ -6,3 +6,6 @@ Add link to History.html in Home.html/css
 Add additional history timelines in History.html
 
 Add more newscards to News.html
+
+
+Add nav options to navbars

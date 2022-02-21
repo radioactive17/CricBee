@@ -45,11 +45,11 @@ def home(request):
         'carousel':carousel,
     }
 
-    return render(request,'homepage/home.html',context)
+    return render(request,'homepage/Home.html',context)
 
 
 def login(request):
     return render(request,'homepage/login.html')
 
 def signup(request):
-    return render(request, 'homepage/signup.html')   
+    return render(request, 'homepage/signup.html')
