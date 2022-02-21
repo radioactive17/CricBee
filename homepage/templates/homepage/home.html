@@ -40,70 +40,22 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">News</h2>
-                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="text-muted section-subheading">Current Buzz in the world of Cricket</h3>
                 </div>
             </div>
             <div class="row">
+              {% for news in recentnews %}
                 <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal1" data-bs-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
+                        </div><img class="img-fluid" src="{{ news.image }}">
                     </a>
                     <div class="portfolio-caption">
-                        <p class="fw-bold">Powell sees incremental improvements to West Indies' T20 game</p>
-                        <p class="text-muted">6h ago</p>
+                        <p class="fw-bold">{{ news.headline }}</p>
+                        <p class="text-muted">{{ news.upload_time }}</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal2" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
-                    </a>
-                    <div class="portfolio-caption">
-                        <p class="fw-bold">Explore</p>
-                        <p class="text-muted">Graphic Design</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal3" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
-                    </a>
-                    <div class="portfolio-caption">
-                        <p class="fw-bold">Finish</p>
-                        <p class="text-muted">Identity</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal4" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
-                    </a>
-                    <div class="portfolio-caption">
-                        <p class="fw-bold">Lines</p>
-                        <p class="text-muted">Branding</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal5" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
-                    </a>
-                    <div class="portfolio-caption">
-                        <p class="fw-bold">Southwest</p>
-                        <p class="text-muted">Website Design</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal6" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{% static 'homepage/assets/img/portfolio/1-thumbnail.jpg' %}">
-                    </a>
-                    <div class="portfolio-caption">
-                        <p class="fw-bold">Window</p>
-                        <p class="text-muted">Photography</p>
-                    </div>
-                </div>
+              {% endfor %}
             </div>
         </div>
     </section>

@@ -34,7 +34,7 @@ for i in j:
 '''
 def home(request):
 
-    recentnews=Recentnews.objects.all().order_by('-newsid')[:10]
+    recentnews=Recentnews.objects.all().order_by('-newsid')[:6]
     #scorecard1=MatchDetails.objects.all().order_by('-date_modified_md')[:3]
     #scorecard2=TeamDetails.objects.all().order_by('-date_modified_td')[:3]
     carousel=Recentnews.objects.all().reverse().order_by('newsid')[:3]
