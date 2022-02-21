@@ -1,3 +1,8 @@
 Add Developer as a heading in homepage.html
 
 Add Form in NewBlog.html
+
+Add link to History.html in Home.html/css
+Add additional history timelines in History.html
+
+Add more newscards to News.html
