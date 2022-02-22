@@ -7,5 +7,6 @@ Add additional history timelines in History.html
 
 Add more newscards to News.html
 
+redirect to detail news
 
 Add nav options to navbars

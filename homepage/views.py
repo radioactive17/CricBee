@@ -45,7 +45,10 @@ def home(request):
         'carousel':carousel,
     }
 
-    return render(request,'homepage/Home.html',context)
+    return render(request,'homepage/home.html',context)
+
+def timeline(request):
+    return render(request, 'homepage/timeline.html')
 
 
 def login(request):
