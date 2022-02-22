@@ -50,6 +50,12 @@ def home(request):
 def timeline(request):
     return render(request, 'homepage/timeline.html')
 
+def news(request):
+    recentnews = Recentnews.objects.all().order_by('-newsid')[:15]
+    context = {
+        'recentnews': recentnews,
+    }
+    return render(request, 'homepage/news.html', context)
 
 def login(request):
     return render(request,'homepage/login.html')

@@ -1,0 +1,65 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>News</h1>
+<div class="container">
+  <div class="row">
+    {% for news in recentnews %}
+      <div class="col-md-4">
+        <div class="blog-card blog-card-blog">
+          <div class="blog-card-image">
+            <a href="#"> <img class="img" src="{{ news.image }}"> </a>
+            <div class="ripple-cont"></div>
+          </div>
+          <div class="blog-table">
+            <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
+            <h4 class="blog-card-caption">
+              <a href="#">{{ news.headline }}</a>
+            </h4>
+            <p class="blog-card-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <div class="ftr">
+              <div class="author">
+                <!--<a href="#"> <img src="https://picsum.photos/id/1005/5760/3840" alt="..." class="avatar img-raised"> <span>Lorem</span> </a>-->
+              </div>
+              <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<nav class="navbar navbar-light navbar-expand-md navigation-clean">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<div class="container justify-content-center">
+    <div class="row ">
+        <div class="col-md-10 offset-md-1">
+    <p> </p><p> </p>
+            <div class="panel panel-default panel-table">
+              <div class="panel-footer justify-content-center">
+                <div class="row justify-content-center">
+
+                  <div class="col-sm-12 col-12">
+                        <ul class="pagination text-right float-right">
+        <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+</div></div></div>
+
+</nav>
+
+
+{% endblock %}
