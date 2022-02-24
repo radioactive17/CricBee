@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<h1>News</h1>
+<h1>Latest News</h1>
 <div class="container">
   <div class="row">
     {% for news in recentnews %}
@@ -17,10 +17,10 @@
             <h4 class="blog-card-caption">
               <a href="#">{{ news.headline }}</a>
             </h4>
-            <p class="blog-card-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <p class="blog-card-description">{{ news.intro }}</p>
             <div class="ftr">
               <div class="author">
-                <!--<a href="#"> <img src="https://picsum.photos/id/1005/5760/3840" alt="..." class="avatar img-raised"> <span>Lorem</span> </a>-->
+                <!--<img src="https://picsum.photos/id/1005/5760/3840" alt="..." class="avatar img-raised">--><span>{{ news.topic }}</span>
               </div>
               <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div>
             </div>
@@ -31,6 +31,7 @@
   </div>
 </div>
 
+<!--
 <nav class="navbar navbar-light navbar-expand-md navigation-clean">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -59,7 +60,7 @@
 
 </div></div></div>
 
-</nav>
+</nav>-->
 
 
 {% endblock %}

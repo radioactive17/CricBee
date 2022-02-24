@@ -48,19 +48,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading">News</h2>
+                    <h2 class="text-uppercase section-heading">Latest News</h2>
                     <h3 class="text-muted section-subheading">Current Buzz in Cricket World</h3>
                 </div>
             </div>
             <div class="row">
               {% for news in recentnews %}
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal" data-bs-toggle="modal">
-                        <div class="portfolio-hover">
+                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="{% url 'detailed-news' news.newsid %}" >
+                        <!--<div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
-                        </div><img class="img-fluid" src="{{ news.image }}">
+                        </div>--><img class="img-fluid" src="{{ news.image }}">
                     </a>
                     <div class="portfolio-caption">
                         <p class="fw-bold">{{ news.headline }}</p>
+                        <p style="font-size:0.75vw">{{ news.intro }}</p>
                         <p class="text-muted">{{ news.upload_time }}</p>
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+        <center><img class="img" src="{{ news.image }}"><br><br>
+          <h3>{{ news.headline }}</h3>
+            {{ news.upload_time }}<br><br>
+                <!--<p id="separator">-</p><span id="year_end">2020</span>-->
+        <p class='text-justify'>{{ news.news }}</p>
+
+        </center>
+</div>
+{% endblock %}
