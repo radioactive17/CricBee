@@ -4,12 +4,31 @@
 {% block content %}
 <br><br><br><br><br>
 <div class="container">
-        <center><img class="img" src="{{ news.image }}"><br><br>
-          <h3>{{ news.headline }}</h3>
-            {{ news.upload_time }}<br><br>
-                <!--<p id="separator">-</p><span id="year_end">2020</span>-->
-        <p class='text-justify'>{{ news.news }}</p>
+  <div class="row">
+      <center>
+      <div class="col-md-6">
+        <div class="blog-card blog-card-blog">
+          <div class="blog-card-image">
+            <img class="img" src="{{ news.image }}">
+            <div class="ripple-cont"></div>
+          </div>
+          <div class="blog-table">
+            <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
+            <h4 class="blog-card-caption">
+              <a href="{% url 'detailed-news' news.newsid %}">{{ news.headline }}</a>
+            </h4>
+            <p class="blog-card-description">{{ news.intro }}</p>
+            <div class="ftr">
+              <div class="author">
+                <!--<img src="https://picsum.photos/id/1005/5760/3840" alt="..." class="avatar img-raised">--><span>{{ news.news }}</span>
+              </div>
+              <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </center>
 
-        </center>
+  </div>
 </div>
 {% endblock %}

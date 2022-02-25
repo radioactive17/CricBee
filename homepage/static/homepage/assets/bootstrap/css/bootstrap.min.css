@@ -4652,7 +4652,8 @@ textarea.form-control-lg {
 }
 
 .navbar-light .navbar-text a, .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
-  color: rgba(0, 0, 0, .9)
+  /*color: rgba(0, 0, 0, .9)*/
+  color: #fec503
 }
 
 .navbar-dark .navbar-brand {
@@ -4693,7 +4694,7 @@ textarea.form-control-lg {
 }
 
 .navbar-dark .navbar-text a, .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
-  color: #fff
+  color: #fec503
 }
 
 .card {
@@ -11841,12 +11842,13 @@ header.masthead .intro-text .intro-heading {
   margin: 0
 }
 
-#portfolio .portfolio-item .portfolio-caption {
+#portfolio .portfolio-item .portfolio-caption:hover {
   max-width: 400px;
   margin: 0 auto;
   padding: 25px;
   text-align: center;
   background-color: #fff
+  color: #fec503
 }
 
 #portfolio .portfolio-item .portfolio-caption h4, #portfolio .portfolio-item .portfolio-caption .h4 {

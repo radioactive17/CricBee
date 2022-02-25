@@ -54,13 +54,12 @@
             </div>
             <div class="row">
               {% for news in recentnews %}
-                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="{% url 'detailed-news' news.newsid %}" >
+                <div class="col-sm-6 col-md-4 portfolio-item">
                         <!--<div class="portfolio-hover">
                             <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
                         </div>--><img class="img-fluid" src="{{ news.image }}">
-                    </a>
                     <div class="portfolio-caption">
-                        <p class="fw-bold">{{ news.headline }}</p>
+                        <a href = "{% url 'detailed-news' news.newsid %}"><p class="fw-bold">{{ news.headline }}</p></a>
                         <p style="font-size:0.75vw">{{ news.intro }}</p>
                         <p class="text-muted">{{ news.upload_time }}</p>
                     </div>

@@ -9,13 +9,13 @@
       <div class="col-md-4">
         <div class="blog-card blog-card-blog">
           <div class="blog-card-image">
-            <a href="#"> <img class="img" src="{{ news.image }}"> </a>
+            <a href="{% url 'detailed-news' news.newsid %}"> <img class="img" src="{{ news.image }}"> </a>
             <div class="ripple-cont"></div>
           </div>
           <div class="blog-table">
             <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
             <h4 class="blog-card-caption">
-              <a href="#">{{ news.headline }}</a>
+              <a href="{% url 'detailed-news' news.newsid %}">{{ news.headline }}</a>
             </h4>
             <p class="blog-card-description">{{ news.intro }}</p>
             <div class="ftr">
