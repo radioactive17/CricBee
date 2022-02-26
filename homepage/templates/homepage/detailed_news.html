@@ -15,12 +15,12 @@
           <div class="blog-table">
             <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
             <h4 class="blog-card-caption">
-              <a href="{% url 'detailed-news' news.newsid %}">{{ news.headline }}</a>
+              {{ news.headline }}
             </h4>
             <p class="blog-card-description">{{ news.intro }}</p>
             <div class="ftr">
               <div class="author">
-                <!--<img src="https://picsum.photos/id/1005/5760/3840" alt="..." class="avatar img-raised">--><span>{{ news.news }}</span>
+                {{ news.news }}
               </div>
               <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div>
             </div>

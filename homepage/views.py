@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Recentnews
 import sys
-from cricbuzz_news import news
+from cricbuzz import news
 
 #Saving news in db
 for news in news.all_news[::-1]:
