@@ -28,10 +28,26 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto text-uppercase">
                     <li class="nav-item"><a class="nav-link">Teams</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Fixtures/Fixtures.html">fixtures</a></li>
-                    <li class="nav-item"><a class="nav-link">Rankings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Blog/Blog-home.html">BeeHive</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Login.html">Login</a></li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Fixtures
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'fixtures' %}">International</a></li>
+                        <li><a class="dropdown-item" href="#">Women</a></li>
+                        <li><a class="dropdown-item" href="#">Domestic</a></li>
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rankings</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li class='nav-item'><a class="dropdown-item" href="#">Mens</a></li>
+                          <li><a class="dropdown-item" href="#">Womens</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +55,8 @@
     {% block content %}
     {% endblock %}
 
-    <footer>
+<!--
+    <footer class="page-footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Cricbee 2022</span></div>
@@ -59,6 +76,18 @@
             </div>
         </div>
     </footer>
+-->
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> Cricbee.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
     <script src="{% static 'homepage/assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'homepage/assets/js/bs-init.js' %}"></script>

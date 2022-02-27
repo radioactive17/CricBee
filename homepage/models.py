@@ -21,3 +21,12 @@ class Recentnews(models.Model):
 
     def __str__(self):
         return self.headline
+
+class Fixtures(models.Model):
+    fixture_id = models.AutoField(primary_key = True)
+    fixture_type = models.CharField(max_length = 50)
+    date = models.CharField(max_length = 100)
+    tour = models.CharField(max_length = 500)
+    match = models.CharField(max_length = 500)
+    location = models.CharField(max_length = 500)
+    time = models.CharField(max_length = 500)

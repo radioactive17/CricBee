@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Recentnews
+from .models import Recentnews, Fixtures
 import sys
-from cricbuzz import news
+from cricbuzz import news, international_fixtures
 
 #Saving news in db
 for news in news.all_news[::-1]:
@@ -31,12 +31,22 @@ def news(request):
     return render(request, 'homepage/news.html', context)
 
 def detailed_news(request, *arg, **kwargs):
-    print(kwargs['pk'])
+    #print(kwargs['pk'])
     news = Recentnews.objects.get(newsid = kwargs['pk'])
     context = {
         'news' : news,
     }
     return render(request, 'homepage/detailed_news.html', context)
+
+def fixtures(request):
+    for fixtures in international_fixtures.int_fixtures[::-1]:
+        f = Fixtures(fixture_type = 'international', date = fixtures[0], tour = fixtures[1], match = fixtures[2], location = fixtures[3], time = fixtures[4])
+        f. save()
+    int_fixtures = Fixtures.objects.filter(fixture_type = 'international').order_by('-fixture_id')
+    context = {
+        'int_fixtures': int_fixtures,
+    }
+    return render(request, 'homepage/fixtures.html', context)
 
 def login(request):
     return render(request,'homepage/login.html')

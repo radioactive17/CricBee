@@ -10,3 +10,7 @@ Add more newscards to News.html
 redirect to detail news
 
 Add nav options to navbars
+
+
+Stats
+Ask for player name and give stats

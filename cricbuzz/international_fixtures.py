@@ -22,16 +22,7 @@ for content_div in main_div.find_all('div', class_ = 'cb-col-100 cb-col'):
         if temp not in int_fixtures:
             int_fixtures.append(temp)
 
-    #match = content_div.find('div', class_ = 'cb-ovr-flo cb-col-60 cb-col cb-mtchs-dy-vnu cb-adjst-lst').find('a').text
-    #location = content_div.find('div', class_ = 'cb-ovr-flo cb-col-60 cb-col cb-mtchs-dy-vnu cb-adjst-lst').find('div', class_ = 'cb-font-12 text-gray cb-ovr-flo').text
-    #time = content_div.find('div', class_ = 'cb-col-40 cb-col cb-mtchs-dy-tm cb-adjst-lst').text
-    #temp = [date, tour, match, location, time]
-    #if temp not in int_fixtures:
-    #    int_fixtures.append(temp)
-
-for fixtures in int_fixtures:
-    print(fixtures)
-
-
-#for content_div in main_div.find_all('div', class_ = 'cb-col-100 cb-col'):
-#    print(f'{content_div}')
+#for fixtures in int_fixtures:
+#    for ele in fixtures:
+#        print(ele)
+#    print()

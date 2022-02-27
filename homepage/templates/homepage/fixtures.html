@@ -1,0 +1,22 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="blog-slider" style="margin-top: 150px;">
+  <div class="blog-slider__wrp swiper-wrapper">
+  {% for fixtures in int_fixtures %}
+      <div class="blog-slider__item swiper-slide">
+          <div class="blog-slider__content"><span class="blog-slider__code">{{ fixtures.date }}</span>
+              <div class="blog-slider__title">
+                  <p>{{ fixtures.tour }}</p>
+              </div>
+              <div class="blog-slider__text">
+                  <p>{{ fixtures.match }}</p>
+              </div><a class="blog-slider__button" href="#">READ MORE</a>
+          </div>
+      </div>
+  {% endfor %}
+  </div>
+  <!--<div class="blog-slider__pagination"></div>-->
+  </div>
+{% endblock %}
