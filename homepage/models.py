@@ -30,3 +30,13 @@ class Fixtures(models.Model):
     match = models.CharField(max_length = 500)
     location = models.CharField(max_length = 500)
     time = models.CharField(max_length = 500)
+
+    def __str__(self):
+        return str(self.date) + ':' + str(self.match)
+
+class Fixtures_date(models.Model):
+    fixture = models.ForeignKey('Fixtures', on_delete = models.CASCADE)
+    date = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return self.date

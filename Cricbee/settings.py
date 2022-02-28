@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'blog.apps.BlogConfig',
     'homepage.apps.HomepageConfig',
     'django.contrib.admin',
@@ -126,3 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRONJOBS = [
+    ('*/30 * * * *', 'myapp.cron.my_cron_job')
+]
