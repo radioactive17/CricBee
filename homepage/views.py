@@ -3,21 +3,56 @@ from django.utils import timezone
 from .models import Recentnews, Fixtures, Fixtures_date
 import sys
 from cricbuzz.news import *
-import schedule
+from cricbuzz.international_fixtures import *
+from pytz import timezone
+from datetime import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 
-#Storing news in the databse
+#Storing news in the database
 def storing_news_in_db():
     news = recent_news()
     #[topic, headline, intro, time, final_img_link, final_link_to_detailed_page, news]
     for rn in news:
-        if Recentnews.objects.get(topic = rn[0], headline = rn[1], intro = rn[2], link = rn[5], image = rn[4], news = rn[6]):
-            continue
-        else:
-            n = Recentnews(topic = rn[0], headline = rn[1], intro = rn[2], time = rn[3], link = rn[5], image = rn[4], news = rn[6])
+        try:
+            if Recentnews.objects.get(topic = rn[0], headline = rn[1], intro = rn[2], link = rn[5], image = rn[4], news = rn[6]):
+                continue
+        except:
+            n = Recentnews(topic = rn[0], headline = rn[1], intro = rn[2], upload_time = rn[3], link = rn[5], image = rn[4], news = rn[6])
             n.save()
+            print(f'Updating Recentnews....')
+    current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+    print(f'Checked for new news at {current_time}')
 
-schedule.every(15).minutes.do(storing_news_in_db)
+#Fetching and storing news in database every 30 minutes
+def news_scheduler():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(storing_news_in_db, 'interval', minutes = 2)
+    scheduler.start()
 
+#storin international fixtures in the database
+def storing_int_fixtures_in_db():
+    ifixtures = international_fixtures()
+    #[date, tour, match, location, time]
+    for i in ifixtures:
+        try:
+            if Fixtures.objects.get(fixture_type = 'international', date = i[0], tour = i[1], match = i[2], location = i[3], time = i[4]):
+                continue
+        except:
+            int_fixture = Fixtures(fixture_type = 'international', date = i[0], tour = i[1], match = i[2], location = i[3], time = i[4])
+            int_fixture.save()
+            int_fix_date = Fixtures_date(fixture = int_fixture, date = i[0])
+            int_fix_date.save()
+            print(f'Updating International Fixtures.....')
+    current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+    print(f'Checked for updated Fixtures at {current_time}')
+
+#Fetching and storing updated international fixture in database every 24 hours
+def int_fixture_scheduler():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 1)
+    scheduler.start()
+
+########################################## VIEWS SECTION ##########################################
 def home(request):
     #storing_news_in_db()
     recentnews=Recentnews.objects.all().order_by('-newsid')[:6]
@@ -49,11 +84,6 @@ def detailed_news(request, *arg, **kwargs):
 
 def fixtures(request):
     '''
-    for fixtures in international_fixtures.int_fixtures[::-1]:
-        f = Fixtures(fixture_type = 'international', date = fixtures[0], tour = fixtures[1], match = fixtures[2], location = fixtures[3], time = fixtures[4])
-        d = Fixtures_date(fixture = f, date = fixtures[0])
-        f. save()
-        d.save()
     int_fixtures = Fixtures.objects.filter(fixture_type = 'international').order_by('fixture_id')
     #print(int_fixtures)
     int_fixtures_date = Fixtures_date.objects.filter(fixture__in = int_fixtures)

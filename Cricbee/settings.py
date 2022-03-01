@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab',
     'blog.apps.BlogConfig',
     'homepage.apps.HomepageConfig',
     'django.contrib.admin',

@@ -25,6 +25,7 @@ def international_fixtures():
     #    for ele in fixtures:
     #        print(ele)
     #    print()
+    return int_fixtures
 
 if __name__ == '__main__':
     while True:
