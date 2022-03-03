@@ -26,7 +26,7 @@ def storing_news_in_db():
 #Fetching and storing news in database every 30 minutes
 def news_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_news_in_db, 'interval', minutes = 30)
+    scheduler.add_job(storing_news_in_db, 'interval', minutes = 15)
     scheduler.start()
 
 #storin international fixtures in the database
@@ -49,7 +49,7 @@ def storing_int_fixtures_in_db():
 #Fetching and storing updated international fixture in database every 24 hours
 def int_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_int_fixtures_in_db, 'interval', hours = 24)
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', hours = 5)
     scheduler.start()
 
 ########################################## VIEWS SECTION ##########################################
@@ -85,11 +85,15 @@ def detailed_news(request, *arg, **kwargs):
 def fixtures(request):
     today = datetime.today()
     date_from, month, year = today.strftime("%d"), today.strftime("%b").upper(), today.strftime("%Y")
-    print(f'{date_from} {month} {year}')
-    date_to = str(int(date_from) + 2).zfill(2)
-
-
-    return render(request, 'homepage/fixtures.html')
+    q1 = month + " " + date_from + " " + year
+    fixtures = Fixtures.objects.filter(date__gte = q1)
+    fixtures_date = Fixtures_date.objects.filter(date__gte = q1)
+    #date_to = str(int(date_from) + 2).zfill(2)
+    context = {
+        'fixtures': fixtures,
+        'fixtures_date': fixtures_date,
+    }
+    return render(request, 'homepage/fixtures.html', context)
 
 def login(request):
     return render(request,'homepage/login.html')

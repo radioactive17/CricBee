@@ -20,7 +20,7 @@ class Recentnews(models.Model):
     news = models.TextField(default = '')
 
     def __str__(self):
-        return self.headline
+        return str(self.newsid) + "-" + str(self.headline)
 
 class Fixtures(models.Model):
     fixture_id = models.AutoField(primary_key = True)

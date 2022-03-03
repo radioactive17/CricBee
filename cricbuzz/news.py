@@ -9,7 +9,7 @@ def recent_news():
     main_div = soup.find('div', class_='cb-col cb-col-67 cb-nws-lft-col')
     all_news = [[] for i in range(10)]
     i = 0
-    for news_div in main_div.find_all('div', class_ = 'cb-col cb-col-100 cb-lst-itm cb-pos-rel cb-lst-itm-lg'):
+    for news_div in reversed(main_div.find_all('div', class_ = 'cb-col cb-col-100 cb-lst-itm cb-pos-rel cb-lst-itm-lg')):
         #fetching news content
         content = news_div.find('div', class_='cb-col-67 cb-nws-lst-rt cb-col cb-col-text-container')
         topic = content.find('div', class_ = 'cb-nws-time').text

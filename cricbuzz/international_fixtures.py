@@ -27,9 +27,11 @@ def international_fixtures():
     #    print()
     return int_fixtures
 
+'''
 if __name__ == '__main__':
     while True:
         international_fixtures()
         wait = 12
         print(f'Waiting {wait} hours before fetching new fixtures')
         time.sleep(wait * 60 * 60)
+'''
