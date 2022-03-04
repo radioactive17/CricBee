@@ -4,7 +4,6 @@
 {% block content %}
 
 {% for date in fixtures_date %}
-  {% ifchanged %}
   <div class="blog-slider" style="margin-top: 150px;">
       <div class="blog-slider__wrp swiper-wrapper">
           {% for fixture in fixtures %}
@@ -25,6 +24,5 @@
       </div>
       <div class="blog-slider__pagination"></div>
   </div>
-  {% endifchanged %}
 {% endfor %}
 {% endblock %}

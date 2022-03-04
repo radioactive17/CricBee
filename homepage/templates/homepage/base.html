@@ -34,8 +34,8 @@
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{% url 'fixtures' fixture_type='international' %}">International</a></li>
-                        <li><a class="dropdown-item" href="#">Women</a></li>
-                        <li><a class="dropdown-item" href="#">Domestic</a></li>
+                        <li><a class="dropdown-item" href="{% url 'fixtures' fixture_type='womens' %}">Women</a></li>
+                        <li><a class="dropdown-item" href="{% url 'fixtures' fixture_type='domestic' %}">Domestic</a></li>
                       </ul>
                     </li>
                     <li class="nav-item dropdown">

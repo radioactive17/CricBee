@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Recentnews, Fixtures, Fixtures_date
+from .models import Recentnews, Fixtures, Fix_Date
 import sys
 from cricbuzz.news import *
 from cricbuzz.international_fixtures import *
@@ -10,6 +10,7 @@ from pytz import timezone
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.db.models import Q
+
 #Storing news in the database
 def storing_news_in_db():
     news = recent_news()
@@ -42,8 +43,12 @@ def storing_int_fixtures_in_db():
         except:
             int_fixture = Fixtures(fixture_type = 'international', date = i[0], tour = i[1], match = i[2], location = i[3], time = i[4])
             int_fixture.save()
-            int_fix_date = Fixtures_date(fixture = int_fixture, date = i[0])
-            int_fix_date.save()
+            try:
+                if Fix_Date.objects.get(date = i[0]):
+                    continue
+            except:
+                fdate = Fix_Date(date = i[0])
+                fdate.save()
             print(f'Updating International Fixtures.....')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
     print(f'Checked for updated International Fixtures at {current_time}')
@@ -64,8 +69,12 @@ def storing_dom_fixtures_in_db():
         except:
             dom_fixture = Fixtures(fixture_type = 'domestic', date = d[0], tour = d[1], match = d[2], location = d[3], time = d[4])
             dom_fixture.save()
-            dom_fix_date = Fixtures_date(fixture = dom_fixture, date = d[0])
-            dom_fix_date.save()
+            try:
+                if Fix_Date.objects.get(date = d[0]):
+                    continue
+            except:
+                fdate = Fix_Date(date = d[0])
+                fdate.save()
             print(f'Updating Domestic Fixtures........')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
     print(f'Checked for updated Domestic Fixtures at {current_time}')
@@ -86,8 +95,12 @@ def storing_wom_fixtures_in_db():
         except:
             wom_fixture = Fixtures(fixture_type = 'womens', date = w[0], tour = w[1], match = w[2], location = w[3], time = w[4])
             wom_fixture.save()
-            wom_fix_date = Fixtures_date(fixture = wom_fixture, date = w[0])
-            wom_fix_date.save()
+            try:
+                if Fix_Date.objects.get(date = w[0]):
+                    continue
+            except:
+                fdate = Fix_Date(date = w[0])
+                fdate.save()
             print(f'Updating Womens Fixtures........')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
     print(f'Checked for updated Womens Fixtures at {current_time}')
@@ -134,7 +147,7 @@ def fixtures(request, *args, **kwargs):
     day = day[0:3]
     q1 = day + ", " + month + " " + date_from + " " + year
     fixtures = Fixtures.objects.filter(Q(date__gte = q1) & Q(fixture_type = kwargs['fixture_type']))
-    fixtures_date = Fixtures_date.objects.filter(date__gte = q1)
+    fixtures_date = Fix_Date.objects.filter(date__gte = q1)
     #date_to = str(int(date_from) + 2).zfill(2)
     context = {
         'fixtures': fixtures,

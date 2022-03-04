@@ -32,11 +32,10 @@ class Fixtures(models.Model):
     time = models.CharField(max_length = 500)
 
     def __str__(self):
-        return str(self.date) + ':' + str(self.match)
+        return str(self.fixture_type) + ' - ' + str(self.date) + ':' + str(self.match)
 
-class Fixtures_date(models.Model):
-    fixture = models.ForeignKey('Fixtures', on_delete = models.CASCADE)
+class Fix_Date(models.Model):
     date = models.CharField(max_length = 100)
 
     def __str__(self):
-        return str(self.fixture.fixture_type) + " - " +str(self.date)
+        return self.date
