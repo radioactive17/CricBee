@@ -1,16 +1,6 @@
-Add Developer as a heading in homepage.html
-
 Add Form in NewBlog.html
-
-Add link to History.html in Home.html/css
-Add additional history timelines in History.html
-
-Add more newscards to News.html
-
-redirect to detail news
-
-Add nav options to navbars
-
 
 Stats
 Ask for player name and give stats
+
+Remove time uplaoded from news in html templates

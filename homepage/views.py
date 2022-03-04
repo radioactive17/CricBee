@@ -4,10 +4,12 @@ from .models import Recentnews, Fixtures, Fixtures_date
 import sys
 from cricbuzz.news import *
 from cricbuzz.international_fixtures import *
+from cricbuzz.domestic_fixtures import *
+from cricbuzz.womens_fixtures import *
 from pytz import timezone
 from datetime import datetime
 from apscheduler.schedulers.background import BackgroundScheduler
-
+from django.db.models import Q
 #Storing news in the database
 def storing_news_in_db():
     news = recent_news()
@@ -29,7 +31,7 @@ def news_scheduler():
     scheduler.add_job(storing_news_in_db, 'interval', minutes = 15)
     scheduler.start()
 
-#storin international fixtures in the database
+#storing international fixtures in the database
 def storing_int_fixtures_in_db():
     ifixtures = international_fixtures()
     #[date, tour, match, location, time]
@@ -44,15 +46,59 @@ def storing_int_fixtures_in_db():
             int_fix_date.save()
             print(f'Updating International Fixtures.....')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
-    print(f'Checked for updated Fixtures at {current_time}')
+    print(f'Checked for updated International Fixtures at {current_time}')
 
 #Fetching and storing updated international fixture in database every 24 hours
 def int_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_int_fixtures_in_db, 'interval', hours = 5)
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 20)
     scheduler.start()
 
-########################################## VIEWS SECTION ##########################################
+#storing domestic fixtures in the database
+def storing_dom_fixtures_in_db():
+    dfixtures = domestic_fixtures()
+    for d in dfixtures:
+        try:
+            if Fixtures.objects.get(fixture_type = 'domestic', date = d[0], tour = d[1], match = d[2], location = d[3], time = d[4]):
+                continue
+        except:
+            dom_fixture = Fixtures(fixture_type = 'domestic', date = d[0], tour = d[1], match = d[2], location = d[3], time = d[4])
+            dom_fixture.save()
+            dom_fix_date = Fixtures_date(fixture = dom_fixture, date = d[0])
+            dom_fix_date.save()
+            print(f'Updating Domestic Fixtures........')
+    current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
+    print(f'Checked for updated Domestic Fixtures at {current_time}')
+
+#Fetching and storing updated domestic fixture in database every 24 hours
+def dom_fixture_scheduler():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 35)
+    scheduler.start()
+
+#storing womens fixtures in the database
+def storing_wom_fixtures_in_db():
+    wfixtures = womens_fixtures()
+    for w in wfixtures:
+        try:
+            if Fixtures.objects.get(fixture_type = 'womens', date = w[0], tour = w[1], match = w[2], location = w[3], time = w[4]):
+                continue
+        except:
+            wom_fixture = Fixtures(fixture_type = 'womens', date = w[0], tour = w[1], match = w[2], location = w[3], time = w[4])
+            wom_fixture.save()
+            wom_fix_date = Fixtures_date(fixture = wom_fixture, date = w[0])
+            wom_fix_date.save()
+            print(f'Updating Womens Fixtures........')
+    current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
+    print(f'Checked for updated Womens Fixtures at {current_time}')
+
+#Fetching and storing updated womens fixture in database every 24 hours
+def wom_fixture_scheduler():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 25)
+    scheduler.start()
+
+##################################################################### VIEWS SECTION #####################################################################
 def home(request):
     #storing_news_in_db()
     recentnews=Recentnews.objects.all().order_by('-newsid')[:6]
@@ -82,11 +128,12 @@ def detailed_news(request, *arg, **kwargs):
     }
     return render(request, 'homepage/detailed_news.html', context)
 
-def fixtures(request):
+def fixtures(request, *args, **kwargs):
     today = datetime.today()
-    date_from, month, year = today.strftime("%d"), today.strftime("%b").upper(), today.strftime("%Y")
-    q1 = month + " " + date_from + " " + year
-    fixtures = Fixtures.objects.filter(date__gte = q1)
+    date_from, month, year, day = today.strftime("%d"), today.strftime("%b").upper(), today.strftime("%Y"), today.strftime("%A").upper()
+    day = day[0:3]
+    q1 = day + ", " + month + " " + date_from + " " + year
+    fixtures = Fixtures.objects.filter(Q(date__gte = q1) & Q(fixture_type = kwargs['fixture_type']))
     fixtures_date = Fixtures_date.objects.filter(date__gte = q1)
     #date_to = str(int(date_from) + 2).zfill(2)
     context = {

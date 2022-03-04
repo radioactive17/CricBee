@@ -39,4 +39,4 @@ class Fixtures_date(models.Model):
     date = models.CharField(max_length = 100)
 
     def __str__(self):
-        return self.date
+        return str(self.fixture.fixture_type) + " - " +str(self.date)
