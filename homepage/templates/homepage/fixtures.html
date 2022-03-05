@@ -1,8 +1,8 @@
 {% extends 'homepage/base.html' %}
 {% load static %}
 
-{% block content %}
 
+{% block content %}
 {% for date in fixtures_date %}
   <div class="blog-slider" style="margin-top: 150px;">
       <div class="blog-slider__wrp swiper-wrapper">
@@ -11,10 +11,10 @@
               <div class="blog-slider__item swiper-slide">
                   <div class="blog-slider__content"><span class="blog-slider__code">{{ fixture.date }}</span>
                       <div class="blog-slider__title">
-                          <p>{{ fixture.tour }}</p>
+                          <p>{{ fixture.match }}</p>
                       </div>
                       <div class="blog-slider__text">
-                          <p>{{ fixture.match }}</p>
+                          <p>{{ fixture.tour }}</p>
                           <p>{{ fixture.location }}</p>
                       </div><!--<a class="blog-slider__button" href="#">READ MORE</a>-->
                   </div>
@@ -25,4 +25,5 @@
       <div class="blog-slider__pagination"></div>
   </div>
 {% endfor %}
+
 {% endblock %}

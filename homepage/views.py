@@ -38,17 +38,18 @@ def storing_int_fixtures_in_db():
     ifixtures = international_fixtures()
     #[date, tour, match, location, time]
     for i in ifixtures:
+        fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
         try:
-            if Fixtures.objects.get(fixture_type = 'international', date = i[0], tour = i[1], match = i[2], location = i[3], time = i[4]):
+            if Fixtures.objects.get(fixture_type = 'international', date = fdate, tour = i[1], match = i[2], location = i[3], time = i[4]):
                 continue
         except:
-            int_fixture = Fixtures(fixture_type = 'international', date = i[0], tour = i[1], match = i[2], location = i[3], time = i[4])
+            int_fixture = Fixtures(fixture_type = 'international', date = fdate, tour = i[1], match = i[2], location = i[3], time = i[4])
             int_fixture.save()
             try:
-                if Fix_Date.objects.get(date = i[0]):
+                if Fix_Date.objects.get(date = fdate):
                     continue
             except:
-                fdate = Fix_Date(date = i[0])
+                fdate = Fix_Date(date = fdate)
                 fdate.save()
             print(f'Updating International Fixtures.....')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
@@ -64,17 +65,18 @@ def int_fixture_scheduler():
 def storing_dom_fixtures_in_db():
     dfixtures = domestic_fixtures()
     for d in dfixtures:
+        fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
         try:
-            if Fixtures.objects.get(fixture_type = 'domestic', date = d[0], tour = d[1], match = d[2], location = d[3], time = d[4]):
+            if Fixtures.objects.get(fixture_type = 'domestic', date = fdate, tour = d[1], match = d[2], location = d[3], time = d[4]):
                 continue
         except:
-            dom_fixture = Fixtures(fixture_type = 'domestic', date = d[0], tour = d[1], match = d[2], location = d[3], time = d[4])
+            dom_fixture = Fixtures(fixture_type = 'domestic', date = fdate, tour = d[1], match = d[2], location = d[3], time = d[4])
             dom_fixture.save()
             try:
-                if Fix_Date.objects.get(date = d[0]):
+                if Fix_Date.objects.get(date = fdate):
                     continue
             except:
-                fdate = Fix_Date(date = d[0])
+                fdate = Fix_Date(date = fdate)
                 fdate.save()
             print(f'Updating Domestic Fixtures........')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
@@ -90,17 +92,18 @@ def dom_fixture_scheduler():
 def storing_wom_fixtures_in_db():
     wfixtures = womens_fixtures()
     for w in wfixtures:
+        fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
         try:
-            if Fixtures.objects.get(fixture_type = 'womens', date = w[0], tour = w[1], match = w[2], location = w[3], time = w[4]):
+            if Fixtures.objects.get(fixture_type = 'womens', date = fdate, tour = w[1], match = w[2], location = w[3], time = w[4]):
                 continue
         except:
-            wom_fixture = Fixtures(fixture_type = 'womens', date = w[0], tour = w[1], match = w[2], location = w[3], time = w[4])
+            wom_fixture = Fixtures(fixture_type = 'womens', date = fdate, tour = w[1], match = w[2], location = w[3], time = w[4])
             wom_fixture.save()
             try:
-                if Fix_Date.objects.get(date = w[0]):
+                if Fix_Date.objects.get(date = fdate):
                     continue
             except:
-                fdate = Fix_Date(date = w[0])
+                fdate = Fix_Date(date = fdate)
                 fdate.save()
             print(f'Updating Womens Fixtures........')
     current_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%ms-%d %H:%M:%S.%f')
@@ -143,24 +146,11 @@ def detailed_news(request, *arg, **kwargs):
     return render(request, 'homepage/detailed_news.html', context)
 
 def fixtures(request, *args, **kwargs):
-    today = datetime.today()
-
-    date_from = today.strftime('%d')
-    month_from = today.strftime('%b').upper()
-    year_from = today.strftime('%Y')
-    day_from = today.strftime('%a').upper()
-    q1 = day_from + ', ' + month_from + ' ' + date_from + ' ' + year_from
-    #print(q1)
-
+    today = datetime.today().strftime("%Y-%m-%d")
     day3 = datetime.today() + timedelta(days=3)
-    date_to = day3.strftime("%d")
-    month_to = day3.strftime("%b").upper()
-    year_to = day3.strftime("%Y")
-    day_to = day3.strftime("%a").upper()
-    q2 = day_to + ', ' + month_to + ' ' + date_to + ' ' + year_to
-    #print(q2)
-    fixtures = Fixtures.objects.filter(Q(fixture_type = kwargs['fixture_type']) & Q(date__gte = q1) & Q(date__lte = q2))
-    fixtures_date = Fix_Date.objects.filter(Q(date__gte = q1) & Q(date__lte = q2))
+    day3 = day3.strftime("%Y-%m-%d")
+    fixtures = Fixtures.objects.filter(Q(fixture_type = kwargs['fixture_type']) & Q(date__range = (today, day3)))
+    fixtures_date = Fix_Date.objects.filter(date__range = (today, day3))
     context = {
         'fixtures': fixtures,
         'fixtures_date': fixtures_date,
