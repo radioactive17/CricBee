@@ -25,7 +25,7 @@ class Recentnews(models.Model):
 class Fixtures(models.Model):
     fixture_id = models.AutoField(primary_key = True)
     fixture_type = models.CharField(max_length = 50)
-    date = models.CharField(max_length = 100)
+    date = models.DateField()
     tour = models.CharField(max_length = 500)
     match = models.CharField(max_length = 500)
     location = models.CharField(max_length = 500)
@@ -35,7 +35,7 @@ class Fixtures(models.Model):
         return str(self.fixture_type) + ' - ' + str(self.date) + ':' + str(self.match)
 
 class Fix_Date(models.Model):
-    date = models.CharField(max_length = 100)
+    date = models.DateField()
 
     def __str__(self):
-        return self.date
+        return str(self.date)

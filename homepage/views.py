@@ -7,9 +7,10 @@ from cricbuzz.international_fixtures import *
 from cricbuzz.domestic_fixtures import *
 from cricbuzz.womens_fixtures import *
 from pytz import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.db.models import Q
+import dateutil.parser #dateutil.parser.parse('2008-04-10 11:47:58-05')
 
 #Storing news in the database
 def storing_news_in_db():
@@ -143,12 +144,23 @@ def detailed_news(request, *arg, **kwargs):
 
 def fixtures(request, *args, **kwargs):
     today = datetime.today()
-    date_from, month, year, day = today.strftime("%d"), today.strftime("%b").upper(), today.strftime("%Y"), today.strftime("%A").upper()
-    day = day[0:3]
-    q1 = day + ", " + month + " " + date_from + " " + year
-    fixtures = Fixtures.objects.filter(Q(date__gte = q1) & Q(fixture_type = kwargs['fixture_type']))
-    fixtures_date = Fix_Date.objects.filter(date__gte = q1)
-    #date_to = str(int(date_from) + 2).zfill(2)
+
+    date_from = today.strftime('%d')
+    month_from = today.strftime('%b').upper()
+    year_from = today.strftime('%Y')
+    day_from = today.strftime('%a').upper()
+    q1 = day_from + ', ' + month_from + ' ' + date_from + ' ' + year_from
+    #print(q1)
+
+    day3 = datetime.today() + timedelta(days=3)
+    date_to = day3.strftime("%d")
+    month_to = day3.strftime("%b").upper()
+    year_to = day3.strftime("%Y")
+    day_to = day3.strftime("%a").upper()
+    q2 = day_to + ', ' + month_to + ' ' + date_to + ' ' + year_to
+    #print(q2)
+    fixtures = Fixtures.objects.filter(Q(fixture_type = kwargs['fixture_type']) & Q(date__gte = q1) & Q(date__lte = q2))
+    fixtures_date = Fix_Date.objects.filter(Q(date__gte = q1) & Q(date__lte = q2))
     context = {
         'fixtures': fixtures,
         'fixtures_date': fixtures_date,
