@@ -19,10 +19,10 @@
     <link rel="stylesheet" href="../assets/css/Responsive-UI-Card.css">
     <link rel="stylesheet" href="../assets/css/serie-card-responsive.css">
     <link rel="stylesheet" href="../assets/css/Timeline.css">
+    <link rel="stylesheet" href="../assets/css/carousel-text.css">
 </head>
 
 <body>
-    <!-- Navbar-->
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
         <div class="container"><a class="navbar-brand" href="#page-top">Cricbee</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -36,10 +36,8 @@
             </div>
         </div>
     </nav>
-    <!-- Navbar-->
 
-    <!-- Caorusel + div -->
-    <div class="blog-slider" style="margin-top: 150px;">
+    <!-- <div class="blog-slider" style="margin-top: 150px;">
         <div class="blog-slider__wrp swiper-wrapper">
             <div class="blog-slider__item swiper-slide">
                 <div class="blog-slider__content"><span class="blog-slider__code">26 December 2019</span>
@@ -73,10 +71,55 @@
             </div>
         </div>
         <div class="blog-slider__pagination"></div>
+    </div> -->
+
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="margin-top: 150px;">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <div class="carousel_content">
+            <span class = "carousel_content__code">26 December 2019</span>
+            <div class = "carousel_content__title"><p>Some text</p></div>
+            <div class= "carousel_content__text">
+              <p>Some gibberish content</p>
+              <p>Again some content</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <div class="carousel_content">
+            <div class="carousel_content">
+              <span class = "carousel_content__code">27 December 2019</span>
+              <div class = "carousel_content__title"><p>Some text</p></div>
+              <div class= "carousel_content__text">
+                <p>Some gibberish content</p>
+                <p>Again some content</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel_content">
+            <div class="carousel_content">
+              <span class = "carousel_content__code">28 December 2019</span>
+              <div class = "carousel_content__title"><p>Some text</p></div>
+              <div class= "carousel_content__text">
+                <p>Some gibberish content</p>
+                <p>Again some content</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-
-    <!-- Caorusel + div -->
-
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>

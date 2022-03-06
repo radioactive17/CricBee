@@ -6361,7 +6361,8 @@ textarea.form-control-lg {
 }
 
 .carousel {
-  position: relative
+  /*position: absolute;*/
+  margin-top: 300px;
 }
 
 .carousel.pointer-event {
@@ -12367,4 +12368,10 @@ img::selection {
 
 img::-moz-selection {
   background: transparent
+}
+
+.carousel-content {
+    color:black;
+    display:flex;
+    align-items:center;
 }
