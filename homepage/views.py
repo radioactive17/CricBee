@@ -65,7 +65,7 @@ def int_fixture_scheduler():
 def storing_dom_fixtures_in_db():
     dfixtures = domestic_fixtures()
     for d in dfixtures:
-        fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
+        fdate = dateutil.parser.parse(d[0]).strftime("%Y-%m-%d")
         try:
             if Fixtures.objects.get(fixture_type = 'domestic', date = fdate, tour = d[1], match = d[2], location = d[3], time = d[4]):
                 continue
@@ -92,7 +92,7 @@ def dom_fixture_scheduler():
 def storing_wom_fixtures_in_db():
     wfixtures = womens_fixtures()
     for w in wfixtures:
-        fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
+        fdate = dateutil.parser.parse(w[0]).strftime("%Y-%m-%d")
         try:
             if Fixtures.objects.get(fixture_type = 'womens', date = fdate, tour = w[1], match = w[2], location = w[3], time = w[4]):
                 continue

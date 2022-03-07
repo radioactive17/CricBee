@@ -3,27 +3,35 @@
 
 
 {% block content %}
-{% for date in fixtures_date %}
-  <div class="blog-slider" style="margin-top: 150px;">
-      <div class="blog-slider__wrp swiper-wrapper">
-          {% for fixture in fixtures %}
-            {% if fixture.date == date.date %}
-              <div class="blog-slider__item swiper-slide">
-                  <div class="blog-slider__content"><span class="blog-slider__code">{{ fixture.date }}</span>
-                      <div class="blog-slider__title">
-                          <p>{{ fixture.match }}</p>
-                      </div>
-                      <div class="blog-slider__text">
-                          <p>{{ fixture.tour }}</p>
-                          <p>{{ fixture.location }}</p>
-                      </div><!--<a class="blog-slider__button" href="#">READ MORE</a>-->
-                  </div>
+  {% for date in fixtures_date %}
+  <div id="carousel{{ forloop.counter }}" class="carousel slide" data-bs-ride="carousel" style="margin-top: 150px;">
+    <div class="carousel-inner">
+      {% for fixture in fixtures %}
+        {% if fixture.date == date.date %}
+          <div class="carousel-item {% ifchanged date.date%} active {% endifchanged %}" data-bs-interval="5000">
+            <div class="carousel_content">
+              <span class = "carousel_content__code">{{ fixture.date }}</span>
+              <div class = "carousel_content__title"><p>{{ fixture.match }}</p></div>
+              <div class= "carousel_content__text">
+                <p>{{ fixture.tour }}</p>
+                <p>{{ fixture.location }}</p>
+                <p>{{ fixture.time }}</p>
               </div>
-            {% endif %}
-          {% endfor %}
-      </div>
-      <div class="blog-slider__pagination"></div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ forloop.counter }}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ forloop.counter }}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-{% endfor %}
+  {% endfor %}
+
 
 {% endblock %}
