@@ -1,6 +1,7 @@
 .account-block {
   padding: 0;
-  background-image: url(https://bootdey.com/img/Content/bg1.jpg);
+  background-image: url('../img/photo-1559579313-021b6ec9f6d6.jpg');
+  /* background-image: linear-gradient(to bottom right, white, green); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -17,6 +18,7 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
+  background-image: url('..assets/img/1.jpg');
 }
 
 .account-block .account-testimonial {
@@ -39,4 +41,3 @@
   border-color: #5369f8;
   color: #fff;
 }
-

@@ -1,6 +1,7 @@
 .account-block {
   padding: 0;
-  background-image: url(https://bootdey.com/img/Content/bg1.jpg);
+  /* background-image: url(https://bootdey.com/img/Content/bg1.jpg); */
+  background-image: linear-gradient(to bottom right, green, white);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
@@ -39,4 +40,3 @@
   border-color: #5369f8;
   color: #fff;
 }
-

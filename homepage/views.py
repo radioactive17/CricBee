@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Recentnews, Fixtures, Fix_Date
 import sys
@@ -11,14 +11,14 @@ from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.db.models import Q
 import dateutil.parser #dateutil.parser.parse('2008-04-10 11:47:58-05')
-
+from django.contrib import messages
 #Storing news in the database
 def storing_news_in_db():
     news = recent_news()
     #[topic, headline, intro, time, final_img_link, final_link_to_detailed_page, news]
     for rn in news:
         try:
-            if Recentnews.objects.get(topic = rn[0], headline = rn[1], intro = rn[2], link = rn[5], image = rn[4], news = rn[6]):
+            if Recentnews.objects.get(headline = rn[1]):
                 continue
         except:
             n = Recentnews(topic = rn[0], headline = rn[1], intro = rn[2], upload_time = rn[3], link = rn[5], image = rn[4], news = rn[6])
@@ -30,7 +30,7 @@ def storing_news_in_db():
 #Fetching and storing news in database every 30 minutes
 def news_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_news_in_db, 'interval', minutes = 15)
+    scheduler.add_job(storing_news_in_db, 'interval', minutes = 5)
     scheduler.start()
 
 #storing international fixtures in the database
@@ -58,7 +58,7 @@ def storing_int_fixtures_in_db():
 #Fetching and storing updated international fixture in database every 24 hours
 def int_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 20)
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 7)
     scheduler.start()
 
 #storing domestic fixtures in the database
@@ -85,7 +85,7 @@ def storing_dom_fixtures_in_db():
 #Fetching and storing updated domestic fixture in database every 24 hours
 def dom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 35)
+    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 9)
     scheduler.start()
 
 #storing womens fixtures in the database
@@ -112,7 +112,7 @@ def storing_wom_fixtures_in_db():
 #Fetching and storing updated womens fixture in database every 24 hours
 def wom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 25)
+    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 11)
     scheduler.start()
 
 ##################################################################### VIEWS SECTION #####################################################################
@@ -156,9 +156,3 @@ def fixtures(request, *args, **kwargs):
         'fixtures_date': fixtures_date,
     }
     return render(request, 'homepage/fixtures.html', context)
-
-def login(request):
-    return render(request,'homepage/login.html')
-
-def signup(request):
-    return render(request, 'homepage/signup.html')

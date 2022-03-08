@@ -4,3 +4,5 @@ Stats
 Ask for player name and give stats
 
 Remove time uplaoded from news in html templates
+
+Navbr --> Login(Profile) Signup interchaneable
