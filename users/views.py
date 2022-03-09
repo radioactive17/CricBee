@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)

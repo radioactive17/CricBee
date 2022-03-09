@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{% static 'homepage/assets/css/serie-card-responsive.css' %}">
     <link rel="stylesheet" href="{% static 'homepage/assets/css/carousel-text.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'homepage/assets/css/registration_song.css' %}">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
@@ -47,10 +49,22 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blogs</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blogs</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li class='nav-item'><a class="dropdown-item" href="{% url 'blog-home' %}">Blog-Home</a></li>
+                          <li><a class="dropdown-item" href="#">MyBlogs</a></li>
+                          <li><a class="dropdown-item" href="#">New Blog</a></li>
+                        </ul>
+                    </li>
                     {% if user.is_authenticated %}
-                      <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user }}</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li class='nav-item'><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
                     {% else %}
                       <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                     {% endif %}
@@ -116,5 +130,6 @@
     <!--<script src="{% static 'homepage/assets/js/agency.js' %}"></script>-->
     <script src="{% static 'homepage/assets/js/responsive-blog-card-slider-1.js' %}"></script>
     <script src="{% static 'homepage/assets/js/responsive-blog-card-slider.js' %}"></script>
+    <script src="{% static 'homepage/assets/js/registration-song.js' %}"></script>
 </body>
 </html>

@@ -73,6 +73,12 @@ p {
   color: #3C4857;
   margin-top: 0;
   margin-bottom: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+
 }
 
 .blog-card .ftr {
@@ -109,4 +115,3 @@ p {
 a {
   text-decoration: none;
 }
-

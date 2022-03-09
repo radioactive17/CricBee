@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="assets/css/Responsive-UI-Card.css">
     <link rel="stylesheet" href="assets/css/serie-card-responsive.css">
     <link rel="stylesheet" href="assets/css/Timeline.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/registration_song.css">
 </head>
 
 <body>
@@ -65,14 +67,38 @@
                         </div>
 
                         <div class="col-lg-6  d-lg-inline-block mt-5">
-                            <div class="account-block rounded-right">
+                          <div class="card">
+                            <!-- Card image -->
+                            <div class="view">
+                              <img class="card-img-top" src="https://mdbootstrap.com/wp-content/uploads/2019/02/flam.jpg"
+                                   alt="Card image cap">
+                              <a href="https://bachataurban.com/" target="_blank">
+                                <div class="mask gradient-card"></div>
+                              </a>
+                            </div>
+                            <!-- Card content -->
+                            <div class="card-body text-center">
+                              <h5 class="h5 font-weight-bold"><a href="https://bachataurban.com/" target="_blank">Dj Flam</a></h5>
+                              <p class="mb-0">Urban Bachata remix</p>
+                              <audio id="music" preload="true">
+                                <source src="C:\Users\jigss\Downloads\radioactive.mp3">
+                              </audio>
+                              <div id="audioplayer">
+                                <i id="pButton" class="fas fa-play"></i>
+                                <div id="timeline">
+                                  <div id="playhead"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            <!-- <div class="account-block rounded-right">
                                 <div class="overlay rounded-right"></div>
                                 <div class="account-testimonial">
                                     <h4 class="text-white mb-4">This  beautiful theme yours!</h4>
                                     <p class="lead text-white">"Best investment i made for a long time. Can only recommend it for other users."</p>
                                     <p>- Admin User</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -96,6 +122,7 @@
     <script src="assets/js/agency.js"></script>
     <script src="assets/js/responsive-blog-card-slider-1.js"></script>
     <script src="assets/js/responsive-blog-card-slider.js"></script>
+    <script src="assets/js/registration-song.js"></script>
 </body>
 
 </html>
