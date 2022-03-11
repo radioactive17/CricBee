@@ -53,8 +53,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blogs</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li class='nav-item'><a class="dropdown-item" href="{% url 'blog-home' %}">Blog-Home</a></li>
-                          <li><a class="dropdown-item" href="#">MyBlogs</a></li>
-                          <li><a class="dropdown-item" href="#">New Blog</a></li>
+                          <li><a class="dropdown-item" href="{% url 'my-blogs' %}">MyBlogs</a></li>
+                          <li><a class="dropdown-item" href="{% url 'new-blog' %}">New Blog</a></li>
                         </ul>
                     </li>
                     {% if user.is_authenticated %}

@@ -5,7 +5,6 @@ Ask for player name and give stats
 
 Remove time uplaoded from news in html templates
 
-Add profile page to change info
 
 Add music in register\login
 
