@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from datetime import datetime
+from django.contrib.messages.views import SuccessMessageMixin
 # Create your views here.
 
 @login_required
@@ -30,3 +31,28 @@ class CreateBlogView(LoginRequiredMixin, CreateView):
          form.instance.author = self.request.user
          form.instance.date_posted = datetime.today()
          return super().form_valid(form)
+
+class UpdateBlogView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Blog
+    fields = ['title', 'content', 'images']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        blog = self.get_object()
+        if self.request.user == blog.author:
+            return True
+        return False
+
+class DeleteBlogView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    model = Blog
+    context_object_name = 'blog'
+    success_url = '/my-blogs/'
+
+    def test_func(self):
+        blog = self.get_object()
+        if self.request.user == blog.author:
+            return True
+        return False

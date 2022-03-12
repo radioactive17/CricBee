@@ -13,7 +13,7 @@
                       </div>
                       <div class="blog-slider__text">
                           <p>{{ blog.content }}</p>
-                      </div><a class="blog-slider__button" href="#">READ MORE</a>
+                      </div><a class="blog-slider__button" href="{% url 'update-blog' blog.postid %}">Update</a><a class="blog-slider__button" href="{% url 'delete-blog' blog.postid %}">Delete</a>
                   </div>
               </div>
             {% endfor %}

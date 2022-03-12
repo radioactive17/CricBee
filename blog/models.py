@@ -16,7 +16,7 @@ class Blog(models.Model):
     images = models.ImageField(default = 'default_blog.jpg', upload_to= 'blog/images')
 
     def __str__(self):
-        return self.title
+        return str(self.postid) + '-' + str(self.author) + ': ' + str(self.title)
 
     def get_absolute_url(self):
         return reverse('my-blogs')
