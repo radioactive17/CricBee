@@ -22,6 +22,7 @@ class UserBlogView(LoginRequiredMixin, ListView):
         return Blog.objects.filter(author = self.request.user)
     context_object_name = 'blogs'
     template_name = 'blog/myblogs.html'
+    paginate_by = 5
 
 
 class CreateBlogView(LoginRequiredMixin, CreateView):

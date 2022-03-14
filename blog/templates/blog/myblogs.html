@@ -2,9 +2,36 @@
 {% load static %}
 
 {% block content %}
-    <div class="blog-slider" style="margin-top: 150px;height: 600px;">
+<br><br>
+<h1>My Blogs</h1>
+<div class="container">
+  <div class="row">
+    {% for blog in blogs %}
+      <div class="col-md-4">
+        <div class="blog-card blog-card-blog">
+          <div class="blog-card-image">
+            <a href="#"> <img class="img" src="{{ blog.images.url }}"> </a>
+              <div class="ripple-cont"></div>
+          </div>
+          <div class="blog-table">
+              <!-- <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6> -->
+              <h4 class="blog-card-caption"><a href="#">{{ blog.title }}</a></h4>
+              <p>{{ blog.date_posted }}</p>
+              <p class="blog-card-description">{{ blog.content }}</p>
+              <div class="ftr">
+                <div class="author">
+                  <a class="btn btn-outline-secondary mt-3" href="{% url 'update-blog' blog.postid %}" role="button">Update</a>
+                  <a class="btn btn-outline-danger mt-3" href="{% url 'delete-blog' blog.postid %}" role="button">Delete</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+    <!-- <div class="blog-slider" style="margin-top: 150px;height: 600px;">
         <div class="blog-slider__wrp swiper-wrapper">
-            {% for blog in blogs %}
               <div class="blog-slider__item swiper-slide">
                   <div class="blog-slider__img"><img src="{{ blog.images.url }}"></div>
                   <div class="blog-slider__content"><span class="blog-slider__code">{{ blog.date_posted }}</span>
@@ -13,11 +40,11 @@
                       </div>
                       <div class="blog-slider__text">
                           <p>{{ blog.content }}</p>
-                      </div><a class="blog-slider__button" href="{% url 'update-blog' blog.postid %}">Update</a><a class="blog-slider__button" href="{% url 'delete-blog' blog.postid %}">Delete</a>
+                      </div>
+                      <a class="btn btn-outline-secondary mt-3" href="#" role="button">Update</a>
+                      <a class="btn btn-outline-danger mt-3" href="#" role="button">Delete</a>
                   </div>
               </div>
-            {% endfor %}
         </div>
-        <div class="blog-slider__pagination"></div>
-    </div>
+    </div> -->
 {% endblock %}

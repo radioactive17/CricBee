@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <div class="blog-slider" style="margin-top: 150px;height: 600px;">
+    <!-- <div class="blog-slider" style="margin-top: 150px;height: 600px;">
         <div class="blog-slider__wrp swiper-wrapper">
-            {% for blog in blogs %}
+
               <div class="blog-slider__item swiper-slide">
                   <div class="blog-slider__img"><img src="{{ blog.images.url }}"></div>
                   <div class="blog-slider__content"><span class="blog-slider__code">Post by <b>{{ blog.author }}</b><br>{{ blog.date_posted }}</span>
@@ -13,11 +13,39 @@
                       </div>
                       <div class="blog-slider__text">
                           <p>{{ blog.content }}</p>
-                      </div><a class="blog-slider__button" href="#">READ MORE</a>
+                      </div><a href="#" class="link-primary">Read more</a>
                   </div>
               </div>
-            {% endfor %}
         </div>
-        <div class="blog-slider__pagination"></div>
+    </div> -->
+    <br><br>
+    <h1>Lates Blogs</h1>
+    <div class="container">
+      <div class="row">
+        {% for blog in blogs %}
+          <div class="col-md-4">
+            <div class="blog-card blog-card-blog">
+              <div class="blog-card-image">
+                <a href="#"> <img class="img" src="{{ blog.images.url }}"> </a>
+                  <div class="ripple-cont"></div>
+              </div>
+              <div class="blog-table">
+                  <!-- <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6> -->
+                  <h4 class="blog-card-caption">
+                  <a href="#">{{ blog.title }}</a>
+                  </h4>
+                  <p>{{ blog.date_posted }}</p>
+                  <p class="blog-card-description">{{ blog.content }}</p>
+                  <div class="ftr">
+                    <div class="author">
+                        <a href="#"> <img src="{{ user.bees.image.url }}" alt="..." class="avatar img-raised"> <span>{{ user }}</span> </a>
+                    </div>
+                    <!-- <div class="stats mt-1"> <i class="far fa-clock"></i>{{ blog.date_posted }}</div> -->
+                  </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
 {% endblock %}

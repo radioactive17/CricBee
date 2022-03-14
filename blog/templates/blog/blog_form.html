@@ -7,10 +7,11 @@
         <div class="blog-slider__wrp swiper-wrapper">
               <div class="blog-slider__item swiper-slide">
                   <!-- <div class="blog-slider__img"><img src="{{ blog.images.url }}"></div> -->
-                  <form id = "create_blog" method = "POST" enctype="multipart/form-data">
+                  <form id = "create_blog"  method = "POST" enctype="multipart/form-data">
                     {% csrf_token %}
                       {{ form|crispy }}
-                      <a class=" btn blog-slider__button mt-3" onclick="document.getElementById('create_blog').submit()">Update</a>
+                      <button type="submit" class="btn btn-primary mt-3">Post</button>
+                      <!-- <a class=" blog-slider__button" href="{% url 'my-blogs' %}">Cancel</a> -->
                   </form>
                   <!-- <div class="blog-slider__content"><span class="blog-slider__code">{{ blog.date_posted }}</span>
                       <div class="blog-slider__title">

@@ -3025,11 +3025,11 @@ textarea.form-control-lg {
   opacity: .65
 }
 
-.btn-primary {
+/* .btn-primary {
   color: #000;
   background-color: #fed136;
   border-color: #fed136
-}
+} */
 
 .btn-primary:hover {
   color: #000;
@@ -12354,10 +12354,10 @@ section h3.section-subheading, section .section-subheading.h3 {
   text-shadow: none
 }
 
-::selection {
+/* ::selection {
   background: #fed136;
   text-shadow: none
-}
+} */
 
 img::-moz-selection {
   background: transparent

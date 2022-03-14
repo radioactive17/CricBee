@@ -9,8 +9,9 @@
             <div class="blog-slider__content"><span class="blog-slider__code">Are you sure you want to delete the post <b>{{ blog.title }}</b><br>created on {{ blog.date_posted }}</span>
               <form id = "delete_blog"  method = "POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                  <a class=" btn blog-slider__button" onclick="document.getElementById('delete_blog').submit()">Yes</a>
-                  <a class=" blog-slider__button" href="{% url 'my-blogs' %}">Cancel</a>
+                  <button type="submit" class="btn btn-outline-danger mt-3 ">Yes</button>
+                  <a class="btn btn-outline-primary mt-3" href="{% url 'my-blogs' %}" role="button">Cancel</a>
+                  <!-- <a class=" blog-slider__button" href="{% url 'my-blogs' %}">Cancel</a> -->
               </form>
               <!-- <div class="blog-slider__content"><span class="blog-slider__code">{{ blog.date_posted }}</span>
                   <div class="blog-slider__title">
