@@ -8,4 +8,5 @@ Remove time uplaoded from news in html templates
 
 Add music in register\login
 
-Remove update-blog bug
+
+duplicate entries in Fixtures, Recentnews Db(remove bug)

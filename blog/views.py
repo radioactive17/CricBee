@@ -24,6 +24,9 @@ class UserBlogView(LoginRequiredMixin, ListView):
     template_name = 'blog/myblogs.html'
     paginate_by = 5
 
+class DetailedBlogView(LoginRequiredMixin, DetailView):
+    model = Blog
+
 
 class CreateBlogView(LoginRequiredMixin, CreateView):
      model = Blog

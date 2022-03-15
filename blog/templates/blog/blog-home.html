@@ -30,12 +30,13 @@
                   <div class="ripple-cont"></div>
               </div>
               <div class="blog-table">
-                  <!-- <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6> -->
+                  <!-- <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> {{ blog.title }}/h6> -->
                   <h4 class="blog-card-caption">
-                  <a href="#">{{ blog.title }}</a>
+                  <a href="{% url 'blog' blog.postid %}">{{ blog.title }}</a>
                   </h4>
                   <p>{{ blog.date_posted }}</p>
                   <p class="blog-card-description">{{ blog.content }}</p>
+                  <a href= "{% url 'blog' blog.postid %}">Read more</a>
                   <div class="ftr">
                     <div class="author">
                         <a href="#"> <img src="{{ user.bees.image.url }}" alt="..." class="avatar img-raised"> <span>{{ user }}</span> </a>

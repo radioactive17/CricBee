@@ -1,0 +1,34 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br><br><br><br>
+<div class="container">
+  <div class="row">
+      <center>
+      <div class="col-md-6">
+        <div class="blog-card blog-card-blog">
+          <div class="blog-card-image">
+            <img class="img" src="{{ blog.images.url }}">
+            <div class="ripple-cont"></div>
+          </div>
+          <div class="blog-table">
+            <!-- <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i>{{ blog.title }}</h6> -->
+            <h4 class="blog-card-caption">
+              {{ blog.title }}
+            </h4>
+            <p class="blog-card-description">{{ blog.date_posted }}</p>
+            <div class="ftr">
+              <div class="author">
+                {{ blog.content }}
+              </div>
+              <!-- <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      </center>
+
+  </div>
+</div>
+{% endblock %}
