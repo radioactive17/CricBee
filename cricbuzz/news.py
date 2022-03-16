@@ -40,7 +40,7 @@ def recent_news():
         i+= 1
 
     #for i in range(10):
-        #print(all_news[i])
+    #    print(all_news[i])
     return all_news
 
 '''

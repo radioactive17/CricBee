@@ -4,30 +4,26 @@
 {% block content %}
 <br><br><br><br><br>
 <div class="container">
-  <div class="row">
-      <center>
-      <div class="col-md-6">
+  <div class="row justify-content-center">
+    <div class="blog-card-image" style="margin-left: 545px;">
+      <img class="img" src="{{ news.image }}" width="750" height = "400">
+      <div class="ripple-cont"></div>
+    </div>
+      <div class="col-md-7 justify-content-center">
         <div class="blog-card blog-card-blog">
-          <div class="blog-card-image">
-            <img class="img" src="{{ news.image }}">
-            <div class="ripple-cont"></div>
-          </div>
           <div class="blog-table">
-            <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
             <h4 class="blog-card-caption">
               {{ news.headline }}
             </h4>
-            <p class="blog-card-description">{{ news.intro }}</p>
+            <p class="blog-card-description">{{ news.upload_time }}</p>
             <div class="ftr">
               <div class="author">
-                {{ news.news }}
+                <p class = "text-justify">{{ news.news|linebreaks }}</p>
               </div>
-              <div class="stats"> <i class="far fa-clock"></i>{{ news.upload_time }} </div>
             </div>
           </div>
         </div>
       </div>
-      </center>
 
   </div>
 </div>

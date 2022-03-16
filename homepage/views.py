@@ -12,6 +12,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from django.db.models import Q
 import dateutil.parser #dateutil.parser.parse('2008-04-10 11:47:58-05')
 from django.contrib import messages
+
+
 #Storing news in the database
 def storing_news_in_db():
     news = recent_news()
@@ -19,7 +21,7 @@ def storing_news_in_db():
     for rn in news:
         try:
             if Recentnews.objects.get(headline = rn[1]):
-                continue
+                pass
         except:
             n = Recentnews(topic = rn[0], headline = rn[1], intro = rn[2], upload_time = rn[3], link = rn[5], image = rn[4], news = rn[6])
             n.save()
@@ -41,13 +43,13 @@ def storing_int_fixtures_in_db():
         fdate = dateutil.parser.parse(i[0]).strftime("%Y-%m-%d")
         try:
             if Fixtures.objects.get(fixture_type = 'international', date = fdate, tour = i[1], match = i[2], location = i[3], time = i[4]):
-                continue
+                pass
         except:
             int_fixture = Fixtures(fixture_type = 'international', date = fdate, tour = i[1], match = i[2], location = i[3], time = i[4])
             int_fixture.save()
             try:
                 if Fix_Date.objects.get(date = fdate):
-                    continue
+                    pass
             except:
                 fdate = Fix_Date(date = fdate)
                 fdate.save()
@@ -58,7 +60,7 @@ def storing_int_fixtures_in_db():
 #Fetching and storing updated international fixture in database every 24 hours
 def int_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 7)
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 30)
     scheduler.start()
 
 #storing domestic fixtures in the database
@@ -68,13 +70,13 @@ def storing_dom_fixtures_in_db():
         fdate = dateutil.parser.parse(d[0]).strftime("%Y-%m-%d")
         try:
             if Fixtures.objects.get(fixture_type = 'domestic', date = fdate, tour = d[1], match = d[2], location = d[3], time = d[4]):
-                continue
+                pass
         except:
             dom_fixture = Fixtures(fixture_type = 'domestic', date = fdate, tour = d[1], match = d[2], location = d[3], time = d[4])
             dom_fixture.save()
             try:
                 if Fix_Date.objects.get(date = fdate):
-                    continue
+                    pass
             except:
                 fdate = Fix_Date(date = fdate)
                 fdate.save()
@@ -85,7 +87,7 @@ def storing_dom_fixtures_in_db():
 #Fetching and storing updated domestic fixture in database every 24 hours
 def dom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 9)
+    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 33)
     scheduler.start()
 
 #storing womens fixtures in the database
@@ -95,13 +97,13 @@ def storing_wom_fixtures_in_db():
         fdate = dateutil.parser.parse(w[0]).strftime("%Y-%m-%d")
         try:
             if Fixtures.objects.get(fixture_type = 'womens', date = fdate, tour = w[1], match = w[2], location = w[3], time = w[4]):
-                continue
+                pass
         except:
             wom_fixture = Fixtures(fixture_type = 'womens', date = fdate, tour = w[1], match = w[2], location = w[3], time = w[4])
             wom_fixture.save()
             try:
                 if Fix_Date.objects.get(date = fdate):
-                    continue
+                    pass
             except:
                 fdate = Fix_Date(date = fdate)
                 fdate.save()
@@ -112,7 +114,7 @@ def storing_wom_fixtures_in_db():
 #Fetching and storing updated womens fixture in database every 24 hours
 def wom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 11)
+    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 35)
     scheduler.start()
 
 ##################################################################### VIEWS SECTION #####################################################################
