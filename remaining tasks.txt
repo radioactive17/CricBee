@@ -12,3 +12,5 @@ Add music in register\login
 duplicate entries in Fixtures, Recentnews Db(remove bug)
 
 make carousel buttons dynamic
+
+make webpages more good looking/interactive
