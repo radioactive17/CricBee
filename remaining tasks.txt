@@ -13,4 +13,8 @@ duplicate entries in Fixtures, Recentnews Db(remove bug)
 
 make carousel buttons dynamic
 
+<<<<<<< HEAD
 maybe improve css?
+=======
+make webpages more good looking/interactive
+>>>>>>> 89581fce8a648463a99762239ac2390d06550ada
