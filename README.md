@@ -29,5 +29,13 @@ DATABASES = {
 ```
 Note: Different Databases require differnet setup. Pleae setup your database accordingly.
 
+## Run the program
+After installing the dependencies and setting up the database you should be good to go and execute the program.
+Run the following code in command line to bring up the sever (Make sure you are in the directory containing manage.py file)
+```bash
+python manage.py runserver
+```
+
+
 ## Developer-Owner
 Jignesh Kirti Nagda
