@@ -35,7 +35,7 @@ Make sure you are in the directory containing manage.py file and Run the followi
 ```bash
 python manage.py runserver
 ```
-
+![cmd]
 
 ## Developer-Owner
 Jignesh Kirti Nagda
