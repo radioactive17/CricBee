@@ -41,5 +41,7 @@ If everything went smoothly, you should see the below screen.
 
 If you run into errors. Please look online for solutions
 
+## Few Snippets of the application
+
 ## Developer-Owner
 Jignesh Kirti Nagda
