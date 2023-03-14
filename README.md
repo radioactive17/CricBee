@@ -11,9 +11,10 @@ pip install -r requirements.txt
 ```
 
 ## Setup Database
-You code wont be executed until you set up your database. 
+You code wont be executed until you set up your database.
 Following are the steps to setup your database for PostgreSQL. 
-Create a database named Cricbee and change the settings.py file in Cricbee directory accordingly. 
+1. Create a database named Cricbee in the PostgreSQL
+2. Change the settings.py file in Cricbee directory accordingly. 
 ```python
 DATABASES = {
     'default': {
