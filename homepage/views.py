@@ -32,7 +32,7 @@ def storing_news_in_db():
 #Fetching and storing news in database every 30 minutes
 def news_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_news_in_db, 'interval', minutes = 5)
+    scheduler.add_job(storing_news_in_db, 'interval', seconds = 90)
     scheduler.start()
 
 #storing international fixtures in the database
@@ -60,7 +60,7 @@ def storing_int_fixtures_in_db():
 #Fetching and storing updated international fixture in database every 24 hours
 def int_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 30)
+    scheduler.add_job(storing_int_fixtures_in_db, 'interval', minutes = 1)
     scheduler.start()
 
 #storing domestic fixtures in the database
@@ -87,7 +87,7 @@ def storing_dom_fixtures_in_db():
 #Fetching and storing updated domestic fixture in database every 24 hours
 def dom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 33)
+    scheduler.add_job(storing_dom_fixtures_in_db, 'interval', minutes = 7)
     scheduler.start()
 
 #storing womens fixtures in the database
@@ -114,7 +114,7 @@ def storing_wom_fixtures_in_db():
 #Fetching and storing updated womens fixture in database every 24 hours
 def wom_fixture_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 35)
+    scheduler.add_job(storing_wom_fixtures_in_db, 'interval', minutes = 3)
     scheduler.start()
 
 ##################################################################### VIEWS SECTION #####################################################################

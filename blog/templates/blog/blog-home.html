@@ -39,7 +39,7 @@
                   <a href= "{% url 'blog' blog.postid %}">Read more</a>
                   <div class="ftr">
                     <div class="author">
-                        <a href="#"> <img src="{{ user.bees.image.url }}" alt="..." class="avatar img-raised"> <span>{{ user }}</span> </a>
+                        <a href="#"> <img src="{{ blog.author.image }}" alt="..." class="avatar img-raised"> <span>{{ blog.author }}</span> </a>
                     </div>
                     <!-- <div class="stats mt-1"> <i class="far fa-clock"></i>{{ blog.date_posted }}</div> -->
                   </div>
