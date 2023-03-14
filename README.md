@@ -38,5 +38,7 @@ python manage.py runserver
 If everything went smoothly, you should see the below screen.
 ![cmd](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/cmd.png?raw=true)
 
+If you run into errors. Please look online for solutions
+
 ## Developer-Owner
 Jignesh Kirti Nagda
