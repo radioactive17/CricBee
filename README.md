@@ -9,5 +9,23 @@ Go to the directory containing requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+
+## Setup Database
+You code wont be executed until you set up your database. 
+Following are the steps to setup your database for PostgreSQL. 
+Create a database named Cricbee and change the settings.py file in Cricbee directory accordingly. 
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Cricbee',
+        'USER': 'your username',
+        'PASSWORD': 'your password',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+```
+
 ## Developer-Owner
 Jignesh Kirti Nagda
