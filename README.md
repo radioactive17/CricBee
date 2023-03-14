@@ -38,7 +38,7 @@ python manage.py runserver
 If everything went smoothly, you should see the below screen.   
   
 ![cmd](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/cmd.png?raw=true)
- <img src="[url](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/cmd.png?raw=true)" alt="cmd" width="100" height="100">
+ <img src="https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/cmd.png?raw=true" alt="cmd" width="100" height="100">
 
 If you run into errors. Please look online for solutions
 
