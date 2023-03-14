@@ -27,6 +27,7 @@ DATABASES = {
     }
 }
 ```
+Note: Different Databases require differnet setup. Pleae check accordingly.
 
 ## Developer-Owner
 Jignesh Kirti Nagda
