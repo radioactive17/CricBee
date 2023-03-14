@@ -36,6 +36,7 @@ Make sure you are in the directory containing manage.py file and Run the followi
 python manage.py runserver
 ```
 If everything went smoothly, you should see the below screen.   
+  
 ![cmd](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/cmd.png?raw=true)
 
 If you run into errors. Please look online for solutions
