@@ -27,7 +27,7 @@ DATABASES = {
     }
 }
 ```
-Note: Different Databases require differnet setup. Pleae check accordingly.
+Note: Different Databases require differnet setup. Pleae setup your database accordingly.
 
 ## Developer-Owner
 Jignesh Kirti Nagda
