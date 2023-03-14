@@ -5,6 +5,7 @@ Introducing a website designed exclusively for cricket fans worldwide! Stay up-t
 But that's not all! This website also offers a comprehensive module where you can learn about the various events that changed the course of the game, deepening your understanding and appreciation of this beloved sport. Whether you're a die-hard cricket fan or a casual observer, our website is the ultimate destination for everything cricket. Join our community today and experience the excitement of cricket like never before!
 
 ## Install Dependencies
+Go to the directory containing requirements.txt 
 ```bash
 pip install -r requirements.txt
 ```
