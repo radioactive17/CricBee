@@ -31,7 +31,7 @@ Note: Different Databases require differnet setup. Pleae setup your database acc
 
 ## Run the program
 After installing the dependencies and setting up the database you should be good to go and execute the program.
-Run the following code in command line to bring up the sever (Make sure you are in the directory containing manage.py file)
+Make sure you are in the directory containing manage.py file and Run the following command line to bring up the sever 
 ```bash
 python manage.py runserver
 ```
