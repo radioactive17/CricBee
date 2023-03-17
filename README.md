@@ -42,9 +42,9 @@ If everything went smoothly, you should see the below screen.
 If you run into errors. Please look online for solutions
 
 ## Few Snippets of the application  
-![home](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/news.png?raw=true)
-![timeline](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/timeline.png?raw=true)
-![blogs](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/blogs-home.png?raw=true)
+![home](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/news.png?raw=true | width = 100)
+![timeline](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/timeline.png?raw=true | width = 100)
+![blogs](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/blogs-home.png?raw=true | width = 100)
 
 ## Developer-Owner
 Jignesh Kirti Nagda
