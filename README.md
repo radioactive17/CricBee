@@ -47,7 +47,7 @@ If you run into errors. Please look online for solutions
 ![blogs](https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/blogs-home.png?raw=true | width = 100)
 <img src="https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/news.png?raw=true" width="750" height = "750">
 <img src="https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/timeline.png?raw=true" width="750" height = "750">
-<img src="https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/timeline.png?raw=true" width="750" height = "750">
+<img src="https://github.com/radioactive17/Cricbee/blob/main/Readme%20images/blogs-home.png?raw=true" width="750" height = "750">
 
 ## Developer-Owner
 Jignesh Kirti Nagda
